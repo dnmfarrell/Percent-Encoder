@@ -43,6 +43,7 @@ benchmark clock-benchmarks
   build-depends:    base,
                     bytestring >=0.10 && <0.11,
                     clock,
+                    deepseq,
                     formatting >= 6.1.0,
                     percent-encoder,
                     QuickCheck,

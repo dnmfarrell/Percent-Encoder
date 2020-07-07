@@ -26,11 +26,14 @@ strictify f xs = xs `deepseq` map f xs
 
 main :: IO ()
 main = do
+  al <- arbitraryByteStringVector 10000000
+  putStr "Warmup: "
+  (clockIt . (strictify PE.encode)) al
   putStr "Percent.Encoder.encode: "
-  arbitraryByteStringVector 10000000 >>= clockIt . (strictify PE.encode)
+  (clockIt . (strictify PE.encode)) al
   putStr "Network.URI.Encode.encodeByteString: "
-  arbitraryByteStringVector 10000000 >>= clockIt . (strictify NUE.encodeByteString)
+  (clockIt . (strictify NUE.encodeByteString)) al
   putStr "Percent.Encoder.decode: "
-  arbitraryByteStringVector 10000000 >>= clockIt . (strictify PE.decode)
+  (clockIt . (strictify PE.decode)) al
   putStr "Network.URI.Encode.decodeByteString: "
-  arbitraryByteStringVector 10000000 >>= clockIt . (strictify NUE.decodeByteString)
+  (clockIt . (strictify NUE.decodeByteString)) al

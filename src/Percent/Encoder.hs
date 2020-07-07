@@ -12,12 +12,10 @@ import qualified Data.Map.Strict as M
 -- | Percent encode a ByteString
 
 encode :: B.ByteString -> B.ByteString
-encode bs
-  | B.null bs = B.empty
-  | otherwise = B.append c $ encode t
-  where b = B.head bs
-        c = encoderArray ! b
-        t = B.tail bs
+encode = B.concatMap encodeByte
+
+encodeByte :: Word8 -> B.ByteString
+encodeByte w = encoderArray ! w
 
 -- | Percent decode a ByteString
 

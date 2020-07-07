@@ -3,7 +3,7 @@
 
 name:                percent-encoder
 version:             0.0.0.0
-synopsis:            Percent encode/decode ByteStrings as fast as possible
+synopsis:            Percent encode/decode ByteStrings
 description:         a fast percent encoder/decoder for bytestrings
 homepage:            https://github.com/dnmfarrell/Percent-Encoder
 license:             BSD3
@@ -55,3 +55,6 @@ benchmark clock-benchmarks
   main-is:          clock-bench.hs
   type:             exitcode-stdio-1.0
 
+Source-Repository HEAD
+  Type:                 git
+  Location:             https://github.com/dnmfarrell/Percent-Encoder

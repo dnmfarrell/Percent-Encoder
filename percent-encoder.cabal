@@ -55,6 +55,18 @@ benchmark clock-benchmarks
   main-is:          clock-bench.hs
   type:             exitcode-stdio-1.0
 
+benchmark criterion
+  build-depends:    base,
+                    bytestring >=0.10 && <0.11,
+                    criterion,
+                    percent-encoder,
+                    uri-encode
+  default-language: Haskell2010
+  ghc-options:      -Wall -O2
+  hs-source-dirs:   benchmarks
+  main-is:          criterion.hs
+  type:             exitcode-stdio-1.0
+
 Source-Repository HEAD
   Type:                 git
   Location:             https://github.com/dnmfarrell/Percent-Encoder

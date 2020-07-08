@@ -17,40 +17,36 @@ Example
 
 Benchmark
 ---------
-My naive benchmark shows percent-encoder to be about 17x faster than
-uri-encode at encoding and 1.9x faster at decoding a fixed string:
+My naive benchmark shows percent-encoder to be about 2x faster than
+Network.URI at encoding and 25% slower at decoding a fixed string:
 
     $ cabal bench criterion
-    Preprocessing library percent-encoder-0.0.0.0...
-    Preprocessing benchmark 'criterion' for percent-encoder-0.0.0.0...
-    Running 1 benchmarks...
-    Benchmark criterion: RUNNING...
+    ...
+
     benchmarking Percent.Encoder/encode
-    time                 986.4 ns   (983.5 ns .. 988.3 ns)
+    
+    time                 931.8 ns   (929.8 ns .. 933.7 ns)
                          1.000 R²   (1.000 R² .. 1.000 R²)
-    mean                 980.2 ns   (977.8 ns .. 982.7 ns)
-    std dev              8.103 ns   (7.128 ns .. 9.347 ns)
-
+    mean                 928.5 ns   (925.5 ns .. 931.2 ns)
+    std dev              9.793 ns   (8.217 ns .. 11.97 ns)
+    
     benchmarking Percent.Encoder/decode
-    time                 708.8 ns   (707.9 ns .. 709.4 ns)
+    time                 714.9 ns   (712.3 ns .. 716.6 ns)
                          1.000 R²   (1.000 R² .. 1.000 R²)
-    mean                 707.5 ns   (706.4 ns .. 708.3 ns)
-    std dev              3.157 ns   (2.272 ns .. 4.392 ns)
-
-    benchmarking Network.URI.Encode/encodeByteString
-    time                 16.87 μs   (16.85 μs .. 16.89 μs)
+    mean                 711.1 ns   (709.8 ns .. 712.4 ns)
+    std dev              4.518 ns   (3.835 ns .. 5.507 ns)
+    
+    benchmarking Network.URI/escapeURIString
+    time                 1.856 μs   (1.854 μs .. 1.859 μs)
                          1.000 R²   (1.000 R² .. 1.000 R²)
-    mean                 16.89 μs   (16.87 μs .. 16.93 μs)
-    std dev              91.50 ns   (50.34 ns .. 168.6 ns)
-
-    benchmarking Network.URI.Encode/decodeByteString
-    time                 1.377 μs   (1.376 μs .. 1.379 μs)
+    mean                 1.852 μs   (1.849 μs .. 1.855 μs)
+    std dev              10.01 ns   (8.285 ns .. 12.62 ns)
+    
+    benchmarking Network.URI/unEscapeString
+    time                 540.3 ns   (539.7 ns .. 540.7 ns)
                          1.000 R²   (1.000 R² .. 1.000 R²)
-    mean                 1.380 μs   (1.379 μs .. 1.382 μs)
-    std dev              5.499 ns   (4.424 ns .. 7.359 ns)
-
-    Benchmark criterion: FINISH
-
+    mean                 540.1 ns   (539.6 ns .. 540.6 ns)
+    std dev              1.677 ns   (1.340 ns .. 2.289 ns)
 
 Gotchas
 -------

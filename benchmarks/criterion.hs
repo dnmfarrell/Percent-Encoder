@@ -11,12 +11,12 @@ encodedUri :: ByteString
 encodedUri = "%2Fpackage%2Fcriterion-1.5.6.2%2Fdocs%2FCriterion-Main.html"
 
 main :: IO ()
-main = defaultMain [bgroup "encode/decode" [
-  bgroup "encode" [
-    bench "PE" $ nf PE.encode uri,
-    bench "NUE" $ nf NUE.encodeByteString uri
+main = defaultMain [bgroup "" [
+  bgroup "Percent.Encoder" [
+    bench "encode" $ nf PE.encode uri,
+    bench "decode" $ nf PE.decode encodedUri
   ],
-  bgroup "decode" [
-    bench "PE" $ nf PE.decode encodedUri,
-    bench "NUE" $ nf NUE.decodeByteString encodedUri
+  bgroup "Network.URI.Encode" [
+    bench "encodeByteString" $ nf NUE.encodeByteString uri,
+    bench "decodeByteString" $ nf NUE.decodeByteString encodedUri
   ]]]

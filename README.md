@@ -21,6 +21,8 @@ My naive benchmark shows percent-encoder, compared to Network.URI
 to be about 2x faster than at encoding and the same speed at decoding
 a fixed string:
 
+    $ ghc --version
+    The Glorious Glasgow Haskell Compilation System, version 8.0.2
     $ cabal bench criterion
     ...
     benchmarking Percent.Encoder/encode
@@ -46,7 +48,6 @@ a fixed string:
                          1.000 R²   (1.000 R² .. 1.000 R²)
     mean                 530.6 ns   (529.9 ns .. 531.2 ns)
     std dev              2.053 ns   (1.717 ns .. 2.464 ns)
-
 
 Gotchas
 -------

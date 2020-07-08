@@ -17,40 +17,41 @@ Example
 
 Benchmark
 ---------
-My naive benchmark shows percent-encoder to be about 2x faster than
-Network.URI at encoding and 25% slower at decoding a fixed string:
+My naive benchmark shows percent-encoder, compared to Network.URI
+to be about 2x faster than at encoding and the same speed at decoding
+a fixed string:
 
     $ cabal bench criterion
     ...
-
     benchmarking Percent.Encoder/encode
-    
-    time                 931.8 ns   (929.8 ns .. 933.7 ns)
+    time                 890.7 ns   (887.3 ns .. 893.7 ns)
                          1.000 R²   (1.000 R² .. 1.000 R²)
-    mean                 928.5 ns   (925.5 ns .. 931.2 ns)
-    std dev              9.793 ns   (8.217 ns .. 11.97 ns)
+    mean                 887.6 ns   (885.1 ns .. 889.9 ns)
+    std dev              8.241 ns   (7.090 ns .. 10.00 ns)
     
     benchmarking Percent.Encoder/decode
-    time                 714.9 ns   (712.3 ns .. 716.6 ns)
+    time                 553.6 ns   (551.9 ns .. 554.8 ns)
                          1.000 R²   (1.000 R² .. 1.000 R²)
-    mean                 711.1 ns   (709.8 ns .. 712.4 ns)
-    std dev              4.518 ns   (3.835 ns .. 5.507 ns)
+    mean                 551.1 ns   (549.8 ns .. 552.2 ns)
+    std dev              4.142 ns   (3.401 ns .. 5.173 ns)
     
     benchmarking Network.URI/escapeURIString
-    time                 1.856 μs   (1.854 μs .. 1.859 μs)
+    time                 1.598 μs   (1.593 μs .. 1.603 μs)
                          1.000 R²   (1.000 R² .. 1.000 R²)
-    mean                 1.852 μs   (1.849 μs .. 1.855 μs)
-    std dev              10.01 ns   (8.285 ns .. 12.62 ns)
+    mean                 1.584 μs   (1.581 μs .. 1.589 μs)
+    std dev              13.65 ns   (11.55 ns .. 15.90 ns)
     
     benchmarking Network.URI/unEscapeString
-    time                 540.3 ns   (539.7 ns .. 540.7 ns)
+    time                 530.7 ns   (530.2 ns .. 531.2 ns)
                          1.000 R²   (1.000 R² .. 1.000 R²)
-    mean                 540.1 ns   (539.6 ns .. 540.6 ns)
-    std dev              1.677 ns   (1.340 ns .. 2.289 ns)
+    mean                 530.6 ns   (529.9 ns .. 531.2 ns)
+    std dev              2.053 ns   (1.717 ns .. 2.464 ns)
+
 
 Gotchas
 -------
 * Does not check for invalid UTF-8 byte sequences
+* Does not protect against decoding invalid strings, like `"%"`
 
 Author
 ------

@@ -23,8 +23,7 @@ library
   build-depends:       array,
                        base,
                        bytestring,
-                       containers,
-                       word8
+                       containers
 
 test-suite quick
   default-language:    Haskell2010

@@ -34,7 +34,7 @@ test-suite quick
                        percent-encoder,
                        QuickCheck,
                        quickcheck-instances
-  ghc-options:         -Wall
+  ghc-options:         -Wall -O
   main-is:             QuickTests.hs
   type:                exitcode-stdio-1.0
 
@@ -46,7 +46,7 @@ benchmark criterion
                     criterion,
                     percent-encoder,
                     network-uri
-  ghc-options:      -Wall -O2
+  ghc-options:      -Wall -O
   main-is:          criterion.hs
   type:             exitcode-stdio-1.0
 
